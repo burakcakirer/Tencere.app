@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: var(--bg-60);
+  --color-brand-card: var(--card-bg);
+  --color-brand-border: var(--card-border);
+  --color-brand-accent: var(--accent-10);
+  --color-brand-accent-alt: var(--accent-alt);
+  --color-brand-text: var(--text-main);
+  --color-brand-text-muted: var(--text-muted);
+  --color-brand-badge: var(--badge-bg);
+}
+
+:root {
+  /* Light Mode (Material Design 3 - Soft Cream & Sage/Pistachio) */
+  --bg-60: #F9F0E0;
+  --card-bg: #E8F4D6; /* Pistachio */
+  --accent-10: #486C2F; /* Forest Green */
+  --accent-alt: #5E3122; /* Earthy Brown */
+  --card-border: rgba(72, 108, 47, 0.15);
+  --text-main: #1c261b;
+  --text-muted: #5e6b5a;
+  --badge-bg: rgba(72, 108, 47, 0.08);
+}
+
+.dark {
+  /* Dark Mode (Material Design 3 - Deep Forest Night) */
+  --bg-60: #121811;
+  --card-bg: #1C261B;
+  --accent-10: #86EFAC; /* Light Green */
+  --accent-alt: #486C2F; /* Forest Green */
+  --card-border: rgba(134, 239, 172, 0.15);
+  --text-main: #f3f4f6;
+  --text-muted: #8ba283;
+  --badge-bg: rgba(134, 239, 172, 0.1);
+}
+
+/* Base resets & layout lock constraints */
+html, body, #root {
+  height: 100%;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-60);
+  color: var(--text-main);
+  transition: background-color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Scrollbar and custom utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Reel motion blur & bounce animations */
+.blur-motion {
+  filter: blur(1.5px);
+  transform: translateY(-2px);
+}
+
+@keyframes reel-snap-bounce {
+  0% { transform: translateY(-40px); opacity: 0; filter: blur(1px); }
+  50% { transform: translateY(8px); opacity: 1; filter: blur(0); }
+  80% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-reel-snap {
+  animation: reel-snap-bounce 0.45s cubic-bezier(0.15, 0.9, 0.2, 1.05) forwards;
+}
